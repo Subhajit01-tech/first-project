@@ -1,0 +1,44 @@
+import java.util.*;
+public class bitmanipulation {
+
+    public static int operationget(int n,int i){
+        // get ith bit
+        int bitMask=n>>i;//bitMask=1<<i;
+        if((bitMask&1)==0){
+            return 0;
+        }else{
+            return 1;
+        }
+
+        
+    }
+    public static int operationset(int n,int i){
+        // set ith bit
+        int bitMask=1<<i;
+        return(n|bitMask);
+    }
+    public static int operationclear(int n,int i){
+        // clear ith bit
+        int bitMask=~(1<<i);
+        return(n&bitMask);
+    }
+    public static int operationupdate(int n,int i,int newBit){
+        // update ith bit
+        n=operationclear(n, i);
+        int bitMask=newBit<<i;
+        return n|bitMask;
+    }
+
+    public static void main(String args[]){
+        Scanner sc=new Scanner(System.in);
+        System.out.print("n:");
+        int n=sc.nextInt();
+        System.out.print("ith:");
+        int i=sc.nextInt();
+        System.out.print("newBit:");
+        int newBit=sc.nextInt();
+        // System.out.println(n>>m);
+        System.out.print(operationupdate(n, i,newBit));
+    }
+    
+}
